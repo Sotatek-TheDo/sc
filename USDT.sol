@@ -439,6 +439,7 @@ contract TetherToken is Pausable, StandardToken, BlackList {
 
     function mint(address receiver, uint amount) public onlyOwner {
         balances[receiver] = balances[receiver].add(amount);
+        _totalSupply = _totalSupply.add(amount);
         Mint(msg.sender, receiver, amount);
     }
 
